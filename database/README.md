@@ -1,5 +1,4 @@
 # Run database with Docker
-
 ```
 cd ./src
 docker build -t my-postgres-db ./
