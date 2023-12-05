@@ -5,6 +5,8 @@ front-end/src/dist/
 front-end/src/npm-debug.log*
 front-end/src/yarn-debug.log*
 front-end/src/yarn-error.log*
+front-end/cypress/downloads
+front-end/cypress/screenshots
 
 *.idea
 *.vscode

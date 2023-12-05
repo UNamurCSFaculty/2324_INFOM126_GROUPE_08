@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "cypress": "npx cypress run --headed --no-exit",
+    "cypress-headless": "npx cypress run --headless",
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
@@ -13,6 +15,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.0",
+    "cypress": "^13.6.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.0",
     "vue-tsc": "^1.8.22"
