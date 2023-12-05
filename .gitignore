@@ -1,13 +1,13 @@
-back-end/__pycache__/*
+back-end/src/__pycache__/*
 
-front-end/node_modules/
-front-end/dist/
-front-end/npm-debug.log*
-front-end/yarn-debug.log*
-front-end/yarn-error.log*
+front-end/src/node_modules/
+front-end/src/dist/
+front-end/src/npm-debug.log*
+front-end/src/yarn-debug.log*
+front-end/src/yarn-error.log*
 
-.idea
-.vscode
+*.idea
+*.vscode
 *.suo
 *.ntvs*
 *.njsproj
