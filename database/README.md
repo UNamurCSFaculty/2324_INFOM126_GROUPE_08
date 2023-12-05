@@ -1,4 +1,4 @@
-# Setup
+# Run database with Docker
 
 ```
 cd ./src
