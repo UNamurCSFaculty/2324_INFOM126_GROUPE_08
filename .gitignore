@@ -1,4 +1,4 @@
-back-end/src/__pycache__/*
+back-end/src/main/__pycache__/*
 back-end/src/main/qrcode.png
 
 front-end/src/node_modules/
