@@ -2,6 +2,7 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
+@app.route("/guest-book", methods=["GET", "POST"])
 def guest_book():
 
     if request.method == "GET":
