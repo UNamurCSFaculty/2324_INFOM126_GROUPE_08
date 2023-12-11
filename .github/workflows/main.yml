@@ -54,5 +54,5 @@ jobs:
       working-directory: front-end
 
     - name: Run front-end tests
-      run: npm run cypress-headless
+      run: npm run cypress-headless-prod
       working-directory: front-end
