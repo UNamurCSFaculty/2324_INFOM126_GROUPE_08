@@ -2,7 +2,7 @@
 
 describe('Web app end-tests', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:1234/')
+    cy.visit(Cypress.config('baseUrl'))
   })
 
   it('contains some text', () => {
