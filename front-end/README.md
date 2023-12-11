@@ -1,6 +1,7 @@
 # Setup
 ```
 npm install
+npm install axios
 ```
 
 # Run server
