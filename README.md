@@ -30,9 +30,8 @@
 - [About](#about)
     - [Built With](#built-with)
 - [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
-- [Usage](#usage)
+    - [Development purpose](#development-purpose)
+    - [Running only purpose](#running-only-purpose)
 - [Roadmap](#roadmap)
 - [Support](#support)
 - [Project assistance](#project-assistance)
@@ -40,7 +39,6 @@
 - [Authors & contributors](#authors--contributors)
 - [Security](#security)
 - [License](#license)
-- [Acknowledgements](#acknowledgements)
 
 </details>
 
@@ -48,31 +46,31 @@
 
 ## About
 
-> **[?]**
-> Describe project
+This project is a small application for generating a QR code from a URL, with the added feature of a feedback function. The aim of this use case is to put into practice the implementation of a production pipeline based on a technology stack.
 
 ### Built With
 
-> **[?]**
-> Please provide the technologies that are used in the project.
+- Back-end : Flask, pytest
+- Database : PostgreSQL
+- Front-end : Vue3, cypress
 
 ## Getting Started
 
-### Prerequisites
+### Development purpose
 
-> **[?]**
-> What are the project requirements/dependencies?
+If you want to run the application in a development context, run the three services on your own by following the instructions in the corresponding README files :
 
-### Installation
+- back-end/README.md
+- database/README.md
+- front-end/README.md
 
-> **[?]**
-> Describe how to install and get started with the project.
+### Running only purpose
 
-## Usage
+If you just want to run the application, set your current directory to the root of the project and run :
 
-> **[?]**
-> How does one go about using it?
-> Provide various use cases and code examples here.
+```
+docker compose up
+```
 
 ## Roadmap
 
@@ -84,13 +82,10 @@ See the [open issues](https://github.com/UNamurCSFaculty/2324_INFOM126_GROUPE_08
 
 ## Support
 
-> **[?]**
-> Provide additional ways to contact the project maintainer/maintainers.
-
 Reach out to the maintainer at one of the following places:
 
 - [GitHub issues](https://github.com/UNamurCSFaculty/2324_INFOM126_GROUPE_08/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+)
-- Contact options listed on [this GitHub profile](https://github.com/UNamurCSFaculty)
+- Send a mail to our support [support@infom126-groupe-08.be](contact@infom126-groupe-08.be)
 
 ## Project assistance
 
@@ -127,9 +122,3 @@ _For more information and to report security issues, please refer to our [securi
 This project is licensed under the **MIT license**.
 
 See [LICENSE](LICENSE) for more information.
-
-## Acknowledgements
-
-> **[?]**
-> If your work was funded by any organization or institution, acknowledge their support here.
-> In addition, if your work relies on other software libraries, or was inspired by looking at other work, it is appropriate to acknowledge this intellectual debt too.
