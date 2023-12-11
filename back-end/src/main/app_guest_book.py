@@ -6,10 +6,12 @@ def guest_book():
     if request.method == "GET":
         limit = request.args.get("limit")
         if limit:
+            # TODO
             return "<p>Hello, World!</p>" + limit
         else:
             return "<p>Hello, World!</p>"
 
     elif request.method == "POST":
         message = request.json["message"]
+        # TODO
         return 'Message saved : "' + message + '"'
