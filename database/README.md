@@ -1,3 +1,9 @@
+# Prerequisites
+
+## Install Docker [![Generic badge](https://img.shields.io/badge/Prerequisite-Docker-blue.svg)](https://www.docker.com/products/docker-desktop/)
+
+Refer https://www.docker.com/products/docker-desktop/ to install Docker
+
 # Run database with Docker
 ```
 cd ./src
