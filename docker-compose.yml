@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  database:
+    container_name: database
+    build:
+      context: './database/src'
+      dockerfile: 'Dockerfile'
+    ports:
+      - '5432:5432'
+
+  back-end:
+    container_name: back-end
+    build:
+      context: './back-end/src'
+      dockerfile: 'Dockerfile'
+    ports:
+      - '5000:5000'
+
+  front-end:
+    container_name: front-end
+    build:
+      context: './front-end'
+      dockerfile: 'Dockerfile'
+    ports:
+      - '8080:8080'
