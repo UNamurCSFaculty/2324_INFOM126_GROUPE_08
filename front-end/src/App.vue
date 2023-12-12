@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import {defineProps, ref} from 'vue';
-//import HelloWorld from './components/HelloWorld.vue';
 import GuestBookForm from './components/GuestBookForm.vue';
 import GuestBookList from './components/GuestBookList.vue';
 
