@@ -1,5 +1,5 @@
 class Database:
-    HOST = "0.0.0.0"
+    HOST = "database"
     PORT = 5432
     USERNAME = "postgres"
     PASSWORD = "grespost"
