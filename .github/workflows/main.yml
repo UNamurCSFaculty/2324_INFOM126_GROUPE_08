@@ -1,0 +1,81 @@
+name: Main-pipeline
+
+on:
+  pull_request:
+    branches:
+    - dev
+
+jobs:
+
+  # Execute linter
+  linter:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Install node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 18.x
+
+    - name: Install dependencies
+      run: npm install
+      working-directory: front-end
+
+    - name: Run ESLint
+      run: npm run eslint
+      working-directory: front-end
+
+  # Execute tests
+  tests:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    
+    steps:
+    #
+    # Init
+    #
+    
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Start containers
+      run: docker-compose -f "docker-compose.yml" up -d --build
+
+
+    #
+    # Back-end
+    #
+
+    - name: Install python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12.1'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+      working-directory: back-end/src
+
+    - name: Run back-end tests
+      run: pytest tests.py
+      working-directory: back-end/src/tests
+      
+
+    #
+    # Front-end
+    #
+
+    - name: Install node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 18.x
+
+    - name: Install dependencies
+      run: npm install
+      working-directory: front-end
+
+    - name: Run front-end tests
+      run: npm run cypress-headless-prod
+      working-directory: front-end
