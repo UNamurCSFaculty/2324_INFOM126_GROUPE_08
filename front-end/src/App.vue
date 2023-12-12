@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, defineProps } from 'vue';
+import {defineProps, ref} from 'vue';
 //import HelloWorld from './components/HelloWorld.vue';
 import GuestBookForm from './components/GuestBookForm.vue';
 import GuestBookList from './components/GuestBookList.vue';
@@ -14,7 +14,6 @@ const entries = ref([]);
       <img src="/assets/guest-book-svgrepo-com.svg" class="logo" alt="Guest Book Logo" />
     </a>
   </div>
-   <!--<HelloWorld msg="Vite + Vue" /> -->
   <div>
     <h1>Guest Book</h1>
     <div class="guest-book-list-container">
