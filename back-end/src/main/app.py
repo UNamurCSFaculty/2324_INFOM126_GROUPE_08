@@ -1,29 +1,20 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import DeclarativeBase
 
 from app_qrcode import app_qrcode
 from app_guest_book import app_guest_book
+from models import db
 
 
-# db config
-class Base(DeclarativeBase):
-    pass
-
-db = SQLAlchemy(model_class=Base)
-
-
-
+# create Flask app
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
+
 # initialize the app with the extension
 db.init_app(app)
-# register blueprint
+
+# register blueprints
 app.register_blueprint(app_guest_book)
 app.register_blueprint(app_qrcode)
-
-
-
 
 
 # launch
