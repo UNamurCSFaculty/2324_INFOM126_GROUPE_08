@@ -2,11 +2,12 @@ from flask import Flask
 
 from endpoints import guest_book_blueprint, qrcode_blueprint
 from models import db
+from configs import Database, API
 
 
 # create Flask app
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = Database.URI
 
 # initialize the app with the extension
 db.init_app(app)
@@ -18,4 +19,4 @@ app.register_blueprint(qrcode_blueprint)
 
 # launch
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host=API.HOST, port=API.PORT)
