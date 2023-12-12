@@ -36,10 +36,9 @@
 
   onMounted(async () => {
     try {
-      const response = await axios.get('/get_guest_book');
-      entries.value = response.data.entries;
+      const response = await axios.get('/guest-book');
+      entries.value = response.data;
       console.log('Data from server:', entries.value);
-      
     } catch (error) {
       console.error('Error fetching entries:', error);
     }
