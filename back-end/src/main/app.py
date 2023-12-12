@@ -1,7 +1,6 @@
 from flask import Flask
 
-from app_qrcode import app_qrcode
-from app_guest_book import app_guest_book
+from endpoints import guest_book_blueprint, qrcode_blueprint
 from models import db
 
 
@@ -13,8 +12,8 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
 db.init_app(app)
 
 # register blueprints
-app.register_blueprint(app_guest_book)
-app.register_blueprint(app_qrcode)
+app.register_blueprint(guest_book_blueprint)
+app.register_blueprint(qrcode_blueprint)
 
 
 # launch

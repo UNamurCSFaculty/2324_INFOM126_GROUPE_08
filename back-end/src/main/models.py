@@ -13,7 +13,6 @@ db = SQLAlchemy(model_class=Base)
 
 
 
-
 # class Message(db.Model):
 #     id_msg = Column(Integer, primary_key=True)
 #     date: Mapped[Date]
