@@ -1,6 +1,7 @@
 back-end/src/main/__pycache__/*
 back-end/src/main/qrcode.png
-back-end/.env
+back-end/src/.env/
+back-end/src/main/instance/
 
 front-end/src/node_modules/
 front-end/src/dist/
