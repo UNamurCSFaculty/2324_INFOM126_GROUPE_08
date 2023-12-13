@@ -7,7 +7,7 @@ from configs import Database, API
 
 # create Flask app
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = Database.URI
+app.config["SQLALCHEMY_DATABASE_URI"] = Database.URI()
 
 # initialize the app with the extension
 db.init_app(app)
