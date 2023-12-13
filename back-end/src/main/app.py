@@ -41,23 +41,19 @@ app.register_blueprint(app_guest_book)
 app.register_blueprint(app_qrcode)
 
 
-
 # Count Tables
 @app.route('/count-tables')
 def count_tables():
     try:
         with app.app_context():
-            # Récupère les informations sur les tables
             inspector = db.inspect(db.engine)
             table_names = inspector.get_table_names()
-
-            # Compte le nombre de tables
             num_tables = len(table_names)
 
             return jsonify({"num_tables": num_tables, "tables": table_names})
     except Exception as e:
         return jsonify({"error": str(e)})
 
-# Lancement de l'application
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

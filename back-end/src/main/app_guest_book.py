@@ -11,7 +11,6 @@ def guest_book():
         entries = GUESTBOOKMESSAGE.query.all()
         entries_data = [{"author": entry.author, "text": entry.text, "date": entry.date} for entry in entries]
         return jsonify(entries=entries_data)
-
     elif request.method == "POST":
             data = request.json
             author = data.get("author")
