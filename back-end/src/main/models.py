@@ -16,8 +16,21 @@ class Message(db.Model):
     date: Mapped[DateTime] = mapped_column(DateTime)
     text: Mapped[String] = mapped_column(String(500))
 
+    def to_json(self):
+        return {
+            "id": self.id_msg,
+            "date": str(self.date),
+            "text": self.text
+        }
+
 
 class Domain(db.Model):
     name: Mapped[String] = mapped_column(String(255), primary_key=True)
     count: Mapped[Integer] = mapped_column(Integer)
+
+    def to_json(self):
+        return {
+            "domain": self.name,
+            "count": self.count
+        }
 
