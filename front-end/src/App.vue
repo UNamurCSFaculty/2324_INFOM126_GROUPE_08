@@ -1,14 +1,38 @@
 <script setup lang="ts">
 import QRCodeGenerator from './components/QRCodeGenerator.vue';
+import {defineProps, ref} from 'vue';
+import GuestBookForm from './components/GuestBookForm.vue';
+import GuestBookList from './components/GuestBookList.vue';
+
+const props = defineProps(['addEntree']);
+const entries = ref([]);
 </script>
 
+
 <template>
-  <QRCodeGenerator/>
+    <div>
+    <QRCodeGenerator/>
+  </div>
+  <div>
+    <a href="https://vitejs.dev" target="_blank">
+      <img src="/assets/guest-book-svgrepo-com.svg" class="logo" alt="Guest Book Logo" />
+    </a>
+  </div>
+  <div>
+    <h1>Guest Book</h1>
+    <div class="guest-book-list-container">
+      <GuestBookList :entries="entries"></GuestBookList>
+    </div>
+
+    <div class="guest-book-form-container">
+      <GuestBookForm @add-entree="props.addEntree"></GuestBookForm>
+    </div>
+  </div>
 </template>
 
 <style scoped>
 .logo {
-  height: 6em;
+  height: 8em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
@@ -18,5 +42,16 @@ import QRCodeGenerator from './components/QRCodeGenerator.vue';
 }
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+
+.guest-book-list-container {
+  border: 3px solid #ddd;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.guest-book-form-container {
+  border: 3px solid #ddd;
+  padding: 10px;
 }
 </style>

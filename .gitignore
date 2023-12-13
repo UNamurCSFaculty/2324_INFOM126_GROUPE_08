@@ -1,5 +1,6 @@
 back-end/src/main/__pycache__/*
 back-end/src/main/qrcode.png
+back-end/.env
 
 front-end/src/node_modules/
 front-end/src/dist/
@@ -8,6 +9,7 @@ front-end/src/yarn-debug.log*
 front-end/src/yarn-error.log*
 front-end/cypress/downloads
 front-end/cypress/screenshots
+front-end/package-lock.json
 
 *.idea
 *.vscode
