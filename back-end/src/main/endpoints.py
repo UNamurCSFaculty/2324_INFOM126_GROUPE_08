@@ -1,5 +1,6 @@
 from flask import Blueprint, request, send_file
 import qrcode
+from controllers import guest_book_GET
 
 guest_book_blueprint = Blueprint('guest_book', __name__)
 qrcode_blueprint = Blueprint('qrcode', __name__)
@@ -8,12 +9,10 @@ qrcode_blueprint = Blueprint('qrcode', __name__)
 @guest_book_blueprint.route("/guest-book", methods=["GET", "POST"])
 def guest_book():
     if request.method == "GET":
-        limit = request.args.get("limit")
-        if limit:
-            # TODO
-            return "<p>Hello, World!</p>" + limit
-        else:
-            return "<p>Hello, World!</p>"
+        # get limit value or get 10 as default value
+        limit = request.args.get("limit", 10, type=int)
+
+        return guest_book_GET(limit)
 
     elif request.method == "POST":
         message = request.json["message"]
