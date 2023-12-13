@@ -2,7 +2,7 @@
   <div>
     <h2>Messages Guest Book</h2>
     <div class="table-container">
-      <table class="table">
+      <table name="table-guest-book" class="table">
         <thead class="thead-dark">
           <tr>
             <th scope="col">Name</th>
@@ -29,7 +29,7 @@
   interface GuestBookEntry {
     author: string;
     text: string;
-    date: Date; 
+    date: string; 
   }
 
   const entries = ref<GuestBookEntry[]>([]);

@@ -5,6 +5,7 @@ import GuestBookList from './components/GuestBookList.vue';
 
 const props = defineProps(['addEntree']);
 const entries = ref([]);
+
 </script>
 
 <template>
