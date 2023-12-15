@@ -1,16 +1,16 @@
-
 <template>
-  <form @submit.prevent="addEntree">
-    <div class="mb-3">
-      <label for="nom" class="form-label">Name :</label>
-      <input v-model="name" type="text" class="form-control" id="nom" required>
-    </div>
-    <div class="mb-3">
-      <label for="message" class="form-label">Message :</label>
-      <textarea v-model="message" class="form-control" id="message" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Send</button>
-  </form>
+
+    <form @submit.prevent="addEntree">
+      <div class="mb-3">
+        <label for="nom" class="form-label">Name </label>
+        <input v-model="name" type="text" class="form-control" id="nom" required>
+      </div>
+      <div class="mb-3">
+        <label for="message" class="form-label">Message </label>
+        <textarea v-model="message" class="form-control" id="message" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Send</button>
+    </form>
 </template>
 
 <script setup lang="ts">
@@ -27,7 +27,7 @@ const addEntree = async () => {
       text: message.value,
     });
 
-    console.log(response.data); 
+    console.log(response.data);
     name.value = '';
     message.value = '';
     location.reload();
@@ -37,3 +37,39 @@ const addEntree = async () => {
 };
 
 </script>
+
+<style scoped>
+
+.guest-book-form-container label {
+  color: white;
+}
+.guest-book-form-container input,
+.guest-book-form-container textarea {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 5px;
+  width: 100%;
+}
+.guest-book-form-container button {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  max-width: 250px;
+  margin: auto;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.guest-book-form-container button:hover {
+  background-color: #0a58ca;
+}
+
+.header {
+    color: white;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-size: 34px;
+    font-weight: bold;
+  }
+</style>
