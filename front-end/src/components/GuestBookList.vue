@@ -4,7 +4,7 @@
     <div>
       <img src="/assets/guest-book-svgrepo-com.svg" class="logo" alt="Guest Book Logo" />
   </div>
-    
+
     <div class="guest-book-list-container">
     <div class="table-container">
       <table name="table-guest-book" class="table">

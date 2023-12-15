@@ -22,8 +22,12 @@ Please try to create bug reports that are:
 1. Search our repository for open or closed
    [Pull Requests](https://github.com/UNamurCSFaculty/2324_INFOM126_GROUPE_08/pulls)
    that relate to your submission. You don't want to duplicate effort.
-2. Fork the project
-3. Create your feature branch (`git checkout -b feat/amazing_feature`)
-4. Commit your changes (`git commit -m 'feat: add amazing_feature'`) INFOM126_GROUPE_08 uses [karma commits convention](https://karma-runner.github.io/0.13/dev/git-commit-msg.html), so please follow the specification in your commit messages.
-5. Push to the branch (`git push origin feat/amazing_feature`)
-6. [Open a Pull Request](https://github.com/UNamurCSFaculty/2324_INFOM126_GROUPE_08/compare?expand=1)
+2. Create an issue for your feature on our repository
+3. Fork the project
+4. Create your feature branch (`git checkout -b feature-<issue_number>`)
+5. Commit your changes (`git commit -m 'feat: add amazing_feature'`) INFOM126_GROUPE_08 uses [karma commits convention](https://karma-runner.github.io/0.13/dev/git-commit-msg.html), so please follow the specification in your commit messages.
+6. Push to the branch (`git push origin feature-<issue_number>`)
+7. [Open a Pull Request](https://github.com/UNamurCSFaculty/2324_INFOM126_GROUPE_08/compare?expand=1)
+
+If approved by one of our reviewers and validated by our pipeline, your branch will be merged into dev. The dev branch will then be merged into master (production) on the next release.
+A new release is made when the set of issues defined for the planned sprint has been done.
