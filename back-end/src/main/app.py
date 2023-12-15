@@ -1,7 +1,7 @@
 from flask import Flask
 
 from endpoints import guest_book_blueprint, qrcode_blueprint
-from models import db
+from database import db
 from configs import Database, API
 
 
