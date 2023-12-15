@@ -1,6 +1,6 @@
 from flask import Blueprint, request, send_file
 import qrcode
-from controllers import guest_book_GET
+from controllers import guest_book_GET, guest_book_POST
 
 guest_book_blueprint = Blueprint('guest_book', __name__)
 qrcode_blueprint = Blueprint('qrcode', __name__)
@@ -15,10 +15,10 @@ def guest_book():
         return guest_book_GET(limit)
 
     elif request.method == "POST":
-        message = request.json["message"]
-        username = request.json["username"]
-        # TODO
-        return 'Message saved : "' + message + '"'
+        text = request.json["text"]
+        author = request.json["author"]
+
+        return guest_book_POST(author, text)
 
 
 @qrcode_blueprint.route("/qrcode", methods=["POST"])
