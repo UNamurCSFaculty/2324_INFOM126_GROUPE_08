@@ -1,14 +1,30 @@
-from datetime import datetime
-from db import db
+from sqlalchemy import Integer, DateTime, String
+from sqlalchemy.orm import Mapped, mapped_column
 
-class GUESTBOOKMESSAGE(db.Model):
-    author = db.Column(db.String(50), primary_key=True)
-    text = db.Column(db.Text, nullable=False)
-    date = db.Column(db.Date, nullable=False)
+from database import db
 
-    def __init__(self, author, text, date=None):
-        self.author = author
-        self.text = text
-        if date is None:
-            date = datetime.now()
-        self.date = date
+
+class Message(db.Model):
+    id_message: Mapped[Integer] = mapped_column(Integer, primary_key=True)
+    date: Mapped[DateTime] = mapped_column(DateTime)
+    author: Mapped[String] = mapped_column(String(30))
+    text: Mapped[String] = mapped_column(String(500))
+
+    def to_json(self):
+        return {
+            "id": self.id_message,
+            "date": str(self.date),
+            "author": self.author,
+            "text": self.text
+        }
+
+
+class Domain(db.Model):
+    name: Mapped[String] = mapped_column(String(255), primary_key=True)
+    count: Mapped[Integer] = mapped_column(Integer)
+
+    def to_json(self):
+        return {
+            "domain": self.name,
+            "count": self.count
+        }
