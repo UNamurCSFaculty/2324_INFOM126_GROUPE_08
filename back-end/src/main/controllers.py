@@ -15,9 +15,15 @@ def guest_book_GET(limit=10):
         # return messages as list of dict (JSON)
         return [message.to_json() for message in messages]
 
-def guest_book_POST(session):
+def guest_book_POST(message: Message):
     pass
+    # with current_app.app_context():
+        # make statement
+
+        # execute query
+
+        # return new message created as dict (JSON)
 
 
-def qu_code_POST(session):
+def qr_code_POST(session):
     pass

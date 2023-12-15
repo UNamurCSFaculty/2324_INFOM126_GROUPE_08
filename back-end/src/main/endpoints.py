@@ -16,6 +16,7 @@ def guest_book():
 
     elif request.method == "POST":
         message = request.json["message"]
+        username = request.json["username"]
         # TODO
         return 'Message saved : "' + message + '"'
 
