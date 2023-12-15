@@ -3,7 +3,7 @@ import QRCodeGenerator from './components/QRCodeGenerator.vue';
 import {defineProps, ref} from 'vue';
 import GuestBookForm from './components/GuestBookForm.vue';
 import GuestBookList from './components/GuestBookList.vue';
-import Footer from './components/Footer.vue';
+import Footer2 from './components/Footer2.vue';
 
 const props = defineProps(['addEntree']);
 const entries = ref([]);
@@ -17,7 +17,7 @@ const entries = ref([]);
         <GuestBookList :entries="entries"></GuestBookList>
         <GuestBookForm @add-entree="props.addEntree"></GuestBookForm>
       </div>
-      <Footer/>
+      <Footer2/>
   </div>
 </template>
 
