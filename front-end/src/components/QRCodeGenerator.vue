@@ -24,7 +24,6 @@
   </div>
 </template>
 
-
 <script setup lang="ts">
 import { ref } from 'vue';
 import axios from 'axios';
@@ -70,43 +69,43 @@ const shareQR = () => {
 </script>
 
 <style scoped>
-  body {
-    background-color: #4800a3;
-  }
+body {
+  background-color: #4800a3;
+}
 
-  .container {
-    background-color: #1a0247;
-    color: white;
-    border-radius: 5%;
-    padding: 3em;
-  }
+.container {
+  background-color: #1a0247;
+  color: white;
+  border-radius: 5%;
+  padding: 3em;
+}
 
-  .header {
-    color: white;
-    text-align: center;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    font-size: 34px;
-    font-weight: bold;
-  }
+.header {
+  color: white;
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-size: 34px;
+  font-weight: bold;
+}
 
-  .qr-code-container {
-    display: inline-block;
-    position: relative;
-    text-align: center;
-  }
+.qr-code-container {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+}
 
-  .download-share-buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: 1em;
-  }
+.download-share-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
 
-  .download-share-buttons button {
-    margin-right: 0.5em;
-  }
+.download-share-buttons button {
+  margin-right: 0.5em;
+}
 
-  .py-2 {
-    background-color: #1a0247;
-  }
+.py-2 {
+  background-color: #1a0247;
+}
 </style>

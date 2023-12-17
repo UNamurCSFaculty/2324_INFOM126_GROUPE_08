@@ -9,20 +9,18 @@ const props = defineProps(['addEntree']);
 const entries = ref([]);
 </script>
 
-
 <template>
   <div class="principal-container">
-      <QRCodeGenerator/>
-      <div class="guest-book-container">
-        <GuestBookList :entries="entries"></GuestBookList>
-        <GuestBookForm @add-entree="props.addEntree"></GuestBookForm>
-      </div>
-      <Footer2/>
+    <QRCodeGenerator/>
+    <div class="guest-book-container">
+      <GuestBookList :entries="entries"></GuestBookList>
+      <GuestBookForm @add-entree="props.addEntree"></GuestBookForm>
+    </div>
+    <Footer2/>
   </div>
 </template>
 
 <style scoped>
-
 .principal-container {
   background-color: #2b0f5f;
   color: white;

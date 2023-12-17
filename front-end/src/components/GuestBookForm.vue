@@ -1,16 +1,15 @@
 <template>
-
-    <form @submit.prevent="addEntree">
-      <div class="mb-3">
-        <label for="nom" class="form-label">Name </label>
-        <input v-model="name" type="text" class="form-control" id="nom" required>
-      </div>
-      <div class="mb-3">
-        <label for="message" class="form-label">Message </label>
-        <textarea v-model="message" class="form-control" id="message" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Send</button>
-    </form>
+  <form @submit.prevent="addEntree">
+    <div class="mb-3">
+      <label for="nom" class="form-label">Name</label>
+      <input v-model="name" type="text" class="form-control" id="nom" required>
+    </div>
+    <div class="mb-3">
+      <label for="message" class="form-label">Message</label>
+      <textarea v-model="message" class="form-control" id="message" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Send</button>
+  </form>
 </template>
 
 <script setup lang="ts">
@@ -35,11 +34,9 @@ const addEntree = async () => {
     console.error('Error adding entry:', error);
   }
 };
-
 </script>
 
 <style scoped>
-
 .guest-book-form-container label {
   color: white;
 }
@@ -65,11 +62,11 @@ const addEntree = async () => {
 }
 
 .header {
-    color: white;
-    text-align: center;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    font-size: 34px;
-    font-weight: bold;
-  }
+  color: white;
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-size: 34px;
+  font-weight: bold;
+}
 </style>
