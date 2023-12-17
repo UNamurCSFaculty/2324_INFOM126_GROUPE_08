@@ -11,12 +11,12 @@ const entries = ref([]);
 
 <template>
   <div class="principal-container">
-    <QRCodeGenerator/>
+    <QRCodeGenerator />
     <div class="guest-book-container">
       <GuestBookList :entries="entries"></GuestBookList>
       <GuestBookForm @add-entree="props.addEntree"></GuestBookForm>
     </div>
-    <FooterComp/>
+    <FooterComp />
   </div>
 </template>
 

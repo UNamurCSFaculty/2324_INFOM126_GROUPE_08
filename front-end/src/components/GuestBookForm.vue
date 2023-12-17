@@ -2,11 +2,11 @@
   <form @submit.prevent="addEntree">
     <div class="mb-3">
       <label for="nom" class="form-label">Name</label>
-      <input v-model="name" type="text" class="form-control" id="nom" required>
+      <input v-model="name" type="text" id="nom" class="form-control" required>
     </div>
     <div class="mb-3">
       <label for="message" class="form-label">Message</label>
-      <textarea v-model="message" class="form-control" id="message" required></textarea>
+      <textarea v-model="message" id="message" class="form-control" required></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Send</button>
   </form>

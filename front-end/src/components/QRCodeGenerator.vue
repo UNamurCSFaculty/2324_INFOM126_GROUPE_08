@@ -5,18 +5,18 @@
       <form @submit.prevent="generateQRCode">
         <h3><center>Enter link to generate a QR code</center></h3><br>
         <div class="input-group mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-default">Link:</span>
-          <input v-model="url" type="text" class="form-control" id="link" aria-describedby="inputGroup-sizing-default" autofocus>
+          <span id="inputGroup-sizing-default" class="input-group-text">Link:</span>
+          <input v-model="url" type="text" id="link" class="form-control" aria-describedby="inputGroup-sizing-default" autofocus>
         </div>
         <div class="input-group mb-3">
           <button type="submit" style="max-width: 200px; margin: auto" class="form-control btn btn-primary">Generate QR Code</button>
         </div>
       </form>
       <h4 v-if="qrcodeImage_b64"><center>QR Code:</center></h4><br>
-      <div class="qr-code-container" style="margin: auto; position: relative" v-if="qrcodeImage_b64">
+      <div v-if="qrcodeImage_b64" class="qr-code-container" style="margin: auto; position: relative">
         <img :src="'data:image/png;base64,' + qrcodeImage_b64" alt="QR Code">
       </div>
-      <div class="download-share-buttons" v-if="qrcodeImage_b64">
+      <div v-if="qrcodeImage_b64" class="download-share-buttons">
         <button class="btn btn-primary" @click="downloadQR">Download</button>
         <button class="btn btn-primary" @click="shareQR">Share</button>
       </div>
