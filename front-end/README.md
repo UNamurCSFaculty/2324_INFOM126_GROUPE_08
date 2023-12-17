@@ -15,7 +15,6 @@ Clone the application to local
 Go into the project Folder and install the npm packages using the following command
 ```bash
 npm install
-npm install axios
 ```
 Run the following command to run the application
 ```
