@@ -6,6 +6,6 @@ describe('Web app end-tests', () => {
   })
 
   it('contains some text', () => {
-    cy.get('h1').contains("Generate QR Code")
+    cy.get('h1').contains("QR Code Generator")
   })
 })
