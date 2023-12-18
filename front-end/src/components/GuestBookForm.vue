@@ -2,7 +2,7 @@
   <form id="formGuestBook" @submit.prevent="addEntree">
     <div class="mb-3">
       <label for="nom" class="form-label">Name</label>
-      <input id="nom" v-model="name" type="text" class="form-control" required>
+      <input id="nom" v-model="author" type="text" class="form-control" required>
     </div>
     <div class="mb-3">
       <label for="message" class="form-label">Message</label>
@@ -10,26 +10,28 @@
     </div>
     <button type="submit" class="btn btn-primary">Send</button>
   </form>
+  <p>{{ requestResp }}</p>
 </template>
 
 <script setup lang="ts">
 import axios from 'axios';
 import { ref } from 'vue';
 
-const name = ref('');
+const author = ref('');
 const message = ref('');
+const requestResp = ref('');
 
 const addEntree = async () => {
   try {
     const response = await axios.post('/guest-book', {
-      author: name.value,
+      author: author.value,
       text: message.value,
     });
 
-    console.log(response.data);
-    name.value = '';
+    author.value = '';
     message.value = '';
-    location.reload();
+
+    requestResp.value = response.data.message;
   } catch (error) {
     console.error('Error adding entry:', error);
   }
