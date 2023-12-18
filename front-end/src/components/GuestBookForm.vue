@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="addEntree">
+  <form id="formGuestBook" @submit.prevent="addEntree">
     <div class="mb-3">
       <label for="nom" class="form-label">Name</label>
       <input id="nom" v-model="name" type="text" class="form-control" required>

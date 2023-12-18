@@ -9,11 +9,11 @@ describe('GuestBook Form', () => {
       cy.get('#nom').type('Maxou');
       cy.get('#message').type('This is a test message.');
   
-      cy.get('form').submit();
+      cy.get('#formGuestBook').submit();
   
       cy.wait(1000); 
   
-      cy.get('.success-message').should('contain.text', 'Entry added successfully');
+      cy.get('.success-message').should('contain.text', 'Entry successfully added');
     });
   });
   

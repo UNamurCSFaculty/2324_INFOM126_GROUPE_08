@@ -2,7 +2,7 @@
   <div>
     <div class="container shadow" style="width: 800px; margin-top: 5em; padding: 3em">
       <h1 class="header">QR Code Generator</h1>
-      <form @submit.prevent="generateQRCode">
+      <form id="formQRCode" @submit.prevent="generateQRCode">
         <h3><center>Enter link to generate a QR code</center></h3><br>
         <div class="input-group mb-3">
           <span id="inputGroup-sizing-default" class="input-group-text">Link:</span>
