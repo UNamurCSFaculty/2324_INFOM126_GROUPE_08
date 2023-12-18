@@ -2,11 +2,11 @@
   <div>
     <div class="container shadow" style="width: 800px; margin-top: 5em; padding: 3em">
       <h1 class="header">QR Code Generator</h1>
-      <form @submit.prevent="generateQRCode">
+      <form id="formQRCode" @submit.prevent="generateQRCode">
         <h3><center>Enter link to generate a QR code</center></h3><br>
         <div class="input-group mb-3">
           <span id="inputGroup-sizing-default" class="input-group-text">Link:</span>
-          <input v-model="url" type="text" id="link" class="form-control" aria-describedby="inputGroup-sizing-default" autofocus>
+          <input id="link" v-model="url" type="text" class="form-control" aria-describedby="inputGroup-sizing-default" autofocus>
         </div>
         <div class="input-group mb-3">
           <button type="submit" style="max-width: 200px; margin: auto" class="form-control btn btn-primary">Generate QR Code</button>
@@ -14,7 +14,7 @@
       </form>
       <h4 v-if="qrcodeImage_b64"><center>QR Code:</center></h4><br>
       <div v-if="qrcodeImage_b64" class="qr-code-container" style="margin: auto; position: relative">
-        <img :src="'data:image/png;base64,' + qrcodeImage_b64" alt="QR Code">
+        <img id="qrcode" :src="'data:image/png;base64,' + qrcodeImage_b64" alt="QR Code">
       </div>
       <div v-if="qrcodeImage_b64" class="download-share-buttons">
         <button class="btn btn-primary" @click="downloadQR">Download</button>

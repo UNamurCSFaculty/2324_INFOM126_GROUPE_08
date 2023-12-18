@@ -1,35 +1,45 @@
 <template>
-  <form @submit.prevent="addEntree">
+  <form id="formGuestBook" @submit.prevent="addEntree">
     <div class="mb-3">
       <label for="nom" class="form-label">Name</label>
-      <input v-model="name" type="text" id="nom" class="form-control" required>
+      <input id="nom" v-model="author" type="text" class="form-control" required>
     </div>
     <div class="mb-3">
       <label for="message" class="form-label">Message</label>
-      <textarea v-model="message" id="message" class="form-control" required></textarea>
+      <textarea id="message" v-model="message" class="form-control" required></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Send</button>
   </form>
+  <p class="response-message">{{ requestResp }}</p>
 </template>
 
 <script setup lang="ts">
 import axios from 'axios';
 import { ref } from 'vue';
 
-const name = ref('');
+const emit = defineEmits(['add-entry']);
+
+const author = ref('');
 const message = ref('');
+const requestResp = ref('');
 
 const addEntree = async () => {
   try {
+    // fetch back api
     const response = await axios.post('/guest-book', {
-      author: name.value,
+      author: author.value,
       text: message.value,
     });
 
-    console.log(response.data);
-    name.value = '';
+    // reset inputs
+    author.value = '';
     message.value = '';
-    location.reload();
+
+    // set the reponse from the back as the new requestResp
+    requestResp.value = response.data.message;
+
+    // emit "add-entry" event with the given new entry
+    emit('add-entry', response.data.entry);
   } catch (error) {
     console.error('Error adding entry:', error);
   }

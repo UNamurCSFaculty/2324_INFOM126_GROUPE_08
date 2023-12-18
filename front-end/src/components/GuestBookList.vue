@@ -16,10 +16,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(entree, index) in entries" :key="index">
-              <td>{{ entree.author }}</td>
-              <td class="justified-text">{{ entree.text }}</td>
-              <td>{{ entree.date }}</td>
+            <tr v-for="(entry, index) in entries.concat(dbEntries).sort((a, b) => Date.parse(b.date) - Date.parse(a.date))" :key="index">
+              <td>{{ entry.author }}</td>
+              <td class="justified-text">{{ entry.text }}</td>
+              <td>{{ entry.date }}</td>
             </tr>
           </tbody>
         </table>
@@ -29,26 +29,34 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue';
-  import axios from 'axios';
+import { onMounted, ref } from 'vue';
+import axios from 'axios';
 
-  interface GuestBookEntry {
-    author: string;
-    text: string;
-    date: string; 
+interface GuestBookEntry {
+  author: string;
+  text: string;
+  date: string; 
+}
+
+const props = defineProps<{
+  entries: GuestBookEntry[];
+}>();
+
+const dbEntries = ref<GuestBookEntry[]>([]);
+
+onMounted(async () => {
+  try {
+    // fetch back api
+    const response = await axios.get('/guest-book');
+
+    // get entries sent from back
+    dbEntries.value = response.data.entries;
+
+    console.log('Data from server:', props.entries.values);
+  } catch (error) {
+    console.error('Error fetching entries:', error);
   }
-
-  const entries = ref<GuestBookEntry[]>([]);
-
-  onMounted(async () => {
-    try {
-      const response = await axios.get('/guest-book');
-      entries.value = response.data.entries;
-      console.log('Data from server:', entries.value);
-    } catch (error) {
-      console.error('Error fetching entries:', error);
-    }
-  });
+});
 </script>
 
 <style scoped>

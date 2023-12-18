@@ -16,6 +16,7 @@ Go into the project Folder and install the npm packages using the following comm
 ```bash
 npm install
 ```
+
 Run the following command to run the application
 ```
 npm run dev
