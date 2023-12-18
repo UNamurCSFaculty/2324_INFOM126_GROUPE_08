@@ -13,7 +13,7 @@ describe('GuestBook Form', () => {
  
     cy.wait(1000); 
  
-    cy.get('.success-message').should('contain.text', 'Entry successfully added');
+    cy.get('.response-message').should('contain.text', 'New message successfully saved !');
   });
 });
   

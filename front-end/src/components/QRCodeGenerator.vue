@@ -14,7 +14,7 @@
       </form>
       <h4 v-if="qrcodeImage_b64"><center>QR Code:</center></h4><br>
       <div v-if="qrcodeImage_b64" class="qr-code-container" style="margin: auto; position: relative">
-        <img :src="'data:image/png;base64,' + qrcodeImage_b64" alt="QR Code">
+        <img id="qrcode" :src="'data:image/png;base64,' + qrcodeImage_b64" alt="QR Code">
       </div>
       <div v-if="qrcodeImage_b64" class="download-share-buttons">
         <button class="btn btn-primary" @click="downloadQR">Download</button>

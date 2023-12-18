@@ -10,7 +10,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Send</button>
   </form>
-  <p>{{ requestResp }}</p>
+  <p class="response-message">{{ requestResp }}</p>
 </template>
 
 <script setup lang="ts">
