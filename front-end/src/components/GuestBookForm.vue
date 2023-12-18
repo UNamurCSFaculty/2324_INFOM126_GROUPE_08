@@ -17,9 +17,7 @@
 import axios from 'axios';
 import { ref } from 'vue';
 
-const emit = defineEmits<{
-  (e: 'add-entry', entry: any): any
-}>();
+const emit = defineEmits(['add-entry']);
 
 const author = ref('');
 const message = ref('');
