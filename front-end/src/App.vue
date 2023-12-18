@@ -5,7 +5,7 @@ import GuestBookForm from './components/GuestBookForm.vue';
 import GuestBookList from './components/GuestBookList.vue';
 import FooterComp from './components/FooterComp.vue';
 
-const props = defineProps(['addEntree']);
+const props = defineProps<{addEntree: any}>();
 const entries = ref([]);
 </script>
 

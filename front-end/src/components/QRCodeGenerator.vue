@@ -6,7 +6,7 @@
         <h3><center>Enter link to generate a QR code</center></h3><br>
         <div class="input-group mb-3">
           <span id="inputGroup-sizing-default" class="input-group-text">Link:</span>
-          <input v-model="url" type="text" id="link" class="form-control" aria-describedby="inputGroup-sizing-default" autofocus>
+          <input id="link" v-model="url" type="text" class="form-control" aria-describedby="inputGroup-sizing-default" autofocus>
         </div>
         <div class="input-group mb-3">
           <button type="submit" style="max-width: 200px; margin: auto" class="form-control btn btn-primary">Generate QR Code</button>
