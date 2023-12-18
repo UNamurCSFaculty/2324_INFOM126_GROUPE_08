@@ -1,27 +1,40 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import QRCodeGenerator from './components/QRCodeGenerator.vue';
+import {defineProps, ref} from 'vue';
+import GuestBookForm from './components/GuestBookForm.vue';
+import GuestBookList from './components/GuestBookList.vue';
+import FooterComp from './components/FooterComp.vue';
+
+const props = defineProps(['addEntree']);
+const entries = ref([]);
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
+  <div class="principal-container">
+    <QRCodeGenerator />
+    <div class="guest-book-container">
+      <GuestBookList :entries="entries"></GuestBookList>
+      <GuestBookForm @add-entree="props.addEntree"></GuestBookForm>
+    </div>
+    <FooterComp />
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.principal-container {
+  background-color: #2b0f5f;
+  color: white;
+  border-radius: 5px;
+  padding: 15px;
+  margin-top: 10px;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+.guest-book-container {
+  background-color: #1a0247;
+  color: white;
+  border-radius: 15px;
+  padding: 15px;
+  margin-top: 30px;
+
 }
 </style>
