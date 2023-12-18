@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { onMounted } from 'vue';
 import axios from 'axios';
 
 interface GuestBookEntry {
@@ -38,13 +38,19 @@ interface GuestBookEntry {
   date: string; 
 }
 
-const entries = ref<GuestBookEntry[]>([]);
+const props = defineProps<{
+  entries: GuestBookEntry[];
+}>();
 
 onMounted(async () => {
   try {
+    // fetch back api
     const response = await axios.get('/guest-book');
-    entries.value = response.data.entries;
-    console.log('Data from server:', entries.value);
+
+    // set app's entries as data sent from back
+    props.entries.values = response.data.entries;
+
+    console.log('Data from server:', props.entries.values);
   } catch (error) {
     console.error('Error fetching entries:', error);
   }

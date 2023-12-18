@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import QRCodeGenerator from './components/QRCodeGenerator.vue';
-import {defineProps, ref} from 'vue';
+import { ref } from 'vue';
 import GuestBookForm from './components/GuestBookForm.vue';
 import GuestBookList from './components/GuestBookList.vue';
 import FooterComp from './components/FooterComp.vue';
 
-const props = defineProps<{addEntree: any}>();
-const entries = ref([]);
+interface GuestBookEntry {
+  author: string;
+  text: string;
+  date: string; 
+}
+
+const entries = ref<GuestBookEntry[]>([]);
 </script>
 
 <template>
@@ -14,7 +19,7 @@ const entries = ref([]);
     <QRCodeGenerator />
     <div class="guest-book-container">
       <GuestBookList :entries="entries"></GuestBookList>
-      <GuestBookForm @add-entree="props.addEntree"></GuestBookForm>
+      <GuestBookForm @add-entry="(newEntry: GuestBookEntry) => entries.push(newEntry)"></GuestBookForm>
     </div>
     <FooterComp />
   </div>

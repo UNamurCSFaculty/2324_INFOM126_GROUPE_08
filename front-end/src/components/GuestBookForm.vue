@@ -17,21 +17,31 @@
 import axios from 'axios';
 import { ref } from 'vue';
 
+const emit = defineEmits<{
+  (e: 'add-entry', entry: any): any
+}>();
+
 const author = ref('');
 const message = ref('');
 const requestResp = ref('');
 
 const addEntree = async () => {
   try {
+    // fetch back api
     const response = await axios.post('/guest-book', {
       author: author.value,
       text: message.value,
     });
 
+    // reset inputs
     author.value = '';
     message.value = '';
 
+    // set the reponse from the back as the new requestResp
     requestResp.value = response.data.message;
+
+    // emit "add-entry" event with the given new entry
+    emit('add-entry', response.data.entry);
   } catch (error) {
     console.error('Error adding entry:', error);
   }
