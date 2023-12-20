@@ -14,11 +14,11 @@ def guest_book():
         return guest_book_GET(limit)
 
     elif request.method == "POST":
-        text = request.json["text"]
-        author = request.json["author"]
+        text = request.json.get("text", None)
+        author = request.json.get("author", None)
 
         if author is None or text is None:
-            return "Invalid request. Both author and text are required.", 400
+            return {"message": "Invalid request. Both author and text are required."}, 400
         else:
             return guest_book_POST(author, text)
 
