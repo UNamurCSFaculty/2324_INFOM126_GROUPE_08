@@ -1,8 +1,8 @@
 from flask import current_app
 from datetime import datetime
 
-from models import Message
-from database import db
+from api.models import Message
+from api.database import db
 
 
 def guest_book_GET(limit=10):

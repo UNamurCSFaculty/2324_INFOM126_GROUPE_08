@@ -1,8 +1,8 @@
 from flask import Flask
 from flask_cors import CORS
 
-from endpoints import guest_book_blueprint, qrcode_blueprint
-from database import db
+from api.endpoints import guest_book_blueprint, qrcode_blueprint
+from api.database import db
 
 
 def create_app(database_URI, debug=False, **kwargs):

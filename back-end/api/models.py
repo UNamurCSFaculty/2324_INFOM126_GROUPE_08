@@ -1,7 +1,7 @@
 from sqlalchemy import Integer, DateTime, String
 from sqlalchemy.orm import Mapped, mapped_column
 
-from database import db
+from api.database import db
 
 
 class Message(db.Model):

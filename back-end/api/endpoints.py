@@ -1,6 +1,7 @@
 from flask import Blueprint, request, send_file
 import qrcode
-from controllers import guest_book_GET, guest_book_POST
+from api.controllers import guest_book_GET, guest_book_POST
+from io import BytesIO
 
 guest_book_blueprint = Blueprint('guest_book', __name__)
 qrcode_blueprint = Blueprint('qrcode', __name__)
@@ -35,6 +36,9 @@ def qr_code():
     qr.make(fit=True)
 
     img = qr.make_image(fill_color="black", back_color="white")
-    img.save("qrcode.png")
 
-    return send_file("qrcode.png", mimetype="image/png")
+    img_buffer = BytesIO()
+    img.save(img_buffer)
+    img_buffer.seek(0)
+
+    return send_file(img_buffer, mimetype="image/png")
