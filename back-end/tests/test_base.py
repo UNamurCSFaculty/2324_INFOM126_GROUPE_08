@@ -1,10 +1,11 @@
 def test_server_running(client):
     # arrange
-    ROOT_TEXT = b"<h1>Not Found</h1>"
+    ENDPOINT = "/"
+    EXPECTED_ROOT_TEXT = b"<h1>Not Found</h1>"
 
     # act
-    response = client.get("/")
+    response = client.get(ENDPOINT)
 
     # assert
-    assert ROOT_TEXT in response.data
+    assert EXPECTED_ROOT_TEXT in response.data
     assert response.status_code == 404
