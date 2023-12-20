@@ -9,7 +9,9 @@ def app():
     app = create_app("sqlite:///:memory:")
 
     # extra setups
-    app.testing = True
+    app.config.update({
+        "TESTING": True
+    })
 
     # yield
     yield app
