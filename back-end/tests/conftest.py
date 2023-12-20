@@ -6,7 +6,7 @@ from config import Database
 
 @pytest.fixture()
 def app():
-    app = create_app(Database.URI(), True)
+    app = create_app("sqlite:///tests.db", True)
 
     # extra setups
 
