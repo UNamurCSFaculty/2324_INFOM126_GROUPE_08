@@ -6,9 +6,10 @@ from config import Database
 
 @pytest.fixture()
 def app():
-    app = create_app("sqlite:///tests.db", True)
+    app = create_app("sqlite:///:memory:")
 
     # extra setups
+    app.testing = True
 
     # yield
     yield app
@@ -20,7 +21,3 @@ def app():
 def client(app):
     return app.test_client()
 
-
-@pytest.fixture()
-def runner(app):
-    return app.test_cli_runner()

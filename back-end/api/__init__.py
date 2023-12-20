@@ -5,14 +5,13 @@ from api.endpoints import guest_book_blueprint, qrcode_blueprint
 from api.database import db
 
 
-def create_app(database_URI, debug=False, **kwargs):
+def create_app(database_URI, **kwargs):
     """ Application factory to create the app object. """
 
     # create Flask app
     app = Flask(__name__)
 
     app.config["SQLALCHEMY_DATABASE_URI"] = database_URI
-    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = debug
 
     # add CORS header to back request
     CORS(app)
