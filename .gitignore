@@ -1,6 +1,5 @@
 back-end/qrcode.png
 back-end/.env/
-*/__pycache__/
 
 front-end/src/node_modules/
 front-end/src/dist/
@@ -18,3 +17,5 @@ front-end/package-lock.json
 *.njsproj
 *.sln
 *.sw*
+*/__pycache__/
+
