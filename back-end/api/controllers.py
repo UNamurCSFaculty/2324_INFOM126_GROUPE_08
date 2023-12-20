@@ -20,9 +20,6 @@ def guest_book_GET(limit=10):
 
 
 def guest_book_POST(author: str, text: str):
-    if author is None or text is None:
-        return "Invalid request. Both author and text are required.", 400
-
     with current_app.app_context():
         # make statement
         new_message = Message(author=author, text=text, date=datetime.now())

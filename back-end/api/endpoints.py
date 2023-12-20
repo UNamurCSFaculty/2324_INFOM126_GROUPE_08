@@ -17,7 +17,10 @@ def guest_book():
         text = request.json["text"]
         author = request.json["author"]
 
-        return guest_book_POST(author, text)
+        if author is None or text is None:
+            return "Invalid request. Both author and text are required.", 400
+        else:
+            return guest_book_POST(author, text)
 
 
 @qrcode_blueprint.route("/qrcode", methods=["POST"])
