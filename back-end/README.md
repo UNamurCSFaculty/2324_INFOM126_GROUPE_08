@@ -7,7 +7,6 @@ Refer https://www.python.org/downloads/ to install Python3
 # Install application's dependencies
 
 ```
-cd ./src
 pip install -r requirements.txt
 ```
 
