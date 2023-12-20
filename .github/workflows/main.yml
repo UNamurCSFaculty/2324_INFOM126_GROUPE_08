@@ -56,11 +56,11 @@ jobs:
 
     - name: Install dependencies
       run: pip install -r requirements.txt
-      working-directory: back-end/src
+      working-directory: back-end
 
     - name: Run back-end tests
-      run: pytest tests.py
-      working-directory: back-end/src/tests
+      run: pytest -v
+      working-directory: back-end
       
 
     #
