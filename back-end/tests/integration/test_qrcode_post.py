@@ -1,7 +1,7 @@
 from pathlib import Path 
 
 
-# get the resources folder in the tests folder
+# get the resources folder
 RESOURCES = Path(__file__).parent.parent / "resources"
 
 def test_qrcode_1(client):
