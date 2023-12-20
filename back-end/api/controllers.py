@@ -1,5 +1,7 @@
 from flask import current_app
 from datetime import datetime
+from io import BytesIO
+from qrcode import QRCode, constants
 
 from api.models import Message
 from api.database import db
@@ -36,5 +38,21 @@ def guest_book_POST(author: str, text: str):
         }
 
 
-def qr_code_POST(session):
-    pass
+def qrcode_POST(url: str):
+    qr = QRCode(
+        version=1,
+        error_correction=constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    qr.add_data(url)
+    qr.make(fit=True)
+
+    img = qr.make_image(fill_color="black", back_color="white")
+
+    img_buffer = BytesIO()
+    img.save(img_buffer)
+    img_buffer.seek(0)
+
+    return img_buffer
+
