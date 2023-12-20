@@ -1,6 +1,5 @@
 from flask import Blueprint, request, send_file
-import qrcode
-from controllers import guest_book_GET, guest_book_POST
+from api.controllers import guest_book_GET, guest_book_POST, qrcode_POST
 
 guest_book_blueprint = Blueprint('guest_book', __name__)
 qrcode_blueprint = Blueprint('qrcode', __name__)
@@ -15,26 +14,20 @@ def guest_book():
         return guest_book_GET(limit)
 
     elif request.method == "POST":
-        text = request.json["text"]
-        author = request.json["author"]
+        text = request.json.get("text", None)
+        author = request.json.get("author", None)
 
-        return guest_book_POST(author, text)
+        if author is None or text is None:
+            return {"message": "Invalid request. Both author and text are required."}, 400
+        else:
+            return guest_book_POST(author, text)
 
 
 @qrcode_blueprint.route("/qrcode", methods=["POST"])
 def qr_code():
     url = request.json["url"]
 
-    qr = qrcode.QRCode(
-        version=1,
-        error_correction=qrcode.constants.ERROR_CORRECT_L,
-        box_size=10,
-        border=4,
-    )
-    qr.add_data(url)
-    qr.make(fit=True)
+    img = qrcode_POST(url)
+    
+    return send_file(img, mimetype="image/png")
 
-    img = qr.make_image(fill_color="black", back_color="white")
-    img.save("qrcode.png")
-
-    return send_file("qrcode.png", mimetype="image/png")
