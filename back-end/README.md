@@ -14,13 +14,11 @@ pip install -r requirements.txt
 # Running the application
 
 ```
-cd ./src/main
-flask --app app run
+python app.py
 ```
 
 # Run tests
 
 ```
-cd ./src/tests
-pytest tests.py
+pytest -v
 ```
