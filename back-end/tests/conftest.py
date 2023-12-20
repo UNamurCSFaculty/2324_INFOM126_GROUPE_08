@@ -1,6 +1,6 @@
 import pytest
 
-from main.app import create_app
+from api import create_app
 from config import Database
 
 

@@ -1,6 +1,11 @@
-back-end/*/qrcode.png
-back-end/.env/
+# back-end
+instance/
+.env/
+__pycache__/
+.pytest_cache/
+qrcode.png
 
+# front-end
 front-end/src/node_modules/
 front-end/src/dist/
 front-end/src/npm-debug.log*
@@ -10,6 +15,7 @@ front-end/cypress/downloads
 front-end/cypress/screenshots
 front-end/package-lock.json
 
+# others
 *.idea
 *.vscode
 *.suo
@@ -17,5 +23,4 @@ front-end/package-lock.json
 *.njsproj
 *.sln
 *.sw*
-*/__pycache__/
 
