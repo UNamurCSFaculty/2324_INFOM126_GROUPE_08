@@ -8,6 +8,7 @@
 <div align="center">
   INFOM126_GROUPE_08
   <br />
+  <br />
 
   [![Pipeline status](https://img.shields.io/github/actions/workflow/status/UNamurCSFaculty/2324_INFOM126_GROUPE_08/main.yml?style=flat-square&label=Main-pipeline
 )](https://github.com/UNamurCSFaculty/2324_INFOM126_GROUPE_08/actions/workflows/main.yml)
