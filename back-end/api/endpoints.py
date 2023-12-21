@@ -18,7 +18,8 @@ def guest_book():
         author = request.json.get("author", None)
 
         if author is None or text is None:
-            return {"message": "Invalid request. Both author and text are required."}, 400
+            message = "Invalid request. Both author and text are required."
+            return {"message": message}, 400
         else:
             return guest_book_POST(author, text)
 
@@ -28,6 +29,5 @@ def qr_code():
     url = request.json["url"]
 
     img = qrcode_POST(url)
-    
-    return send_file(img, mimetype="image/png")
 
+    return send_file(img, mimetype="image/png")

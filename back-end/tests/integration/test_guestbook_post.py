@@ -10,8 +10,8 @@ def test_guestbook_1(client):
     AUTHOR = "Sieg"
     TEXT = "Hello"
     DATA = {"author": AUTHOR, "text": TEXT}
-    SUCCESS_MESSAGE = "New message successfully saved !" 
-    
+    SUCCESS_MESSAGE = "New message successfully saved !"
+
     # act
     response = client.post(ENDPOINT, json=DATA)
 
@@ -33,4 +33,3 @@ def test_guestbook_2(client):
     # assert
     assert response.status_code == 400
     assert response.json["message"] == ERROR_MESSAGE
-

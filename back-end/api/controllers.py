@@ -52,4 +52,3 @@ def qrcode_POST(url: str):
     img_buffer.seek(0)
 
     return img_buffer
-
