@@ -9,10 +9,13 @@
   INFOM126_GROUPE_08
   <br />
   <br />
+  [![Pipeline status](https://img.shields.io/github/actions/workflow/status/UNamurCSFaculty/2324_INFOM126_GROUPE_08/main.yml?style=flat-square&label=Main-pipeline
+)](https://github.com/UNamurCSFaculty/2324_INFOM126_GROUPE_08/actions/workflows/main.yml)
+  <br />
   <a href="https://github.com/UNamurCSFaculty/2324_INFOM126_GROUPE_08/issues/new?assignees=&labels=bug&template=01_BUG_REPORT.md&title=bug%3A+">Report a Bug</a>
   ·
   <a href="https://github.com/UNamurCSFaculty/2324_INFOM126_GROUPE_08/issues/new?assignees=&labels=enhancement&template=02_FEATURE_REQUEST.md&title=feat%3A+">Request a Feature</a>
-  .
+  ·
   <a href="https://github.com/UNamurCSFaculty/2324_INFOM126_GROUPE_08/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+">Ask a Question</a>
 </div>
 
