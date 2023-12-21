@@ -29,4 +29,3 @@ def create_app(database_URI, **kwargs):
 
     # return app object
     return app
-

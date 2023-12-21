@@ -1,8 +1,8 @@
-from pathlib import Path 
-
+from pathlib import Path
 
 # get the resources folder
 RESOURCES = Path(__file__).parent.parent / "resources"
+
 
 def test_qrcode_1(client):
     # arrange
@@ -16,6 +16,7 @@ def test_qrcode_1(client):
     # assert
     assert response.status_code == 200
     assert open(EXPECTED_QRCODE, "rb").read() == response.data
+
 
 def test_qrcode_2(client):
     # arrange

@@ -22,7 +22,7 @@ def test_guestbook_2(client):
     ENDPOINT = "/guest-book"
     AUTHOR = "Jean"
     TEXT = "Bonjour,"
-    
+
     # act
     with client.application.app_context():
         guest_book_POST(AUTHOR, TEXT)
@@ -42,7 +42,7 @@ def test_guestbook_3(client):
     TEXT_1 = "Bonjour,"
     AUTHOR_2 = "Michel"
     TEXT_2 = "Yoo"
-    
+
     # act
     with client.application.app_context():
         guest_book_POST(AUTHOR_1, TEXT_1)
@@ -56,4 +56,3 @@ def test_guestbook_3(client):
     assert response.json["entries"][0]["text"] == TEXT_2
     assert response.json["entries"][1]["author"] == AUTHOR_1
     assert response.json["entries"][1]["text"] == TEXT_1
-
