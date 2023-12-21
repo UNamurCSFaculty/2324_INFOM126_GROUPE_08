@@ -7,14 +7,40 @@ on:
 
 jobs:
 
-  # Execute linter
+  # Execute linters
   linter:
     runs-on: ubuntu-latest
     steps:
+    #
+    # Init
+    #
     
     - name: Checkout
       uses: actions/checkout@v1
 
+
+    #
+    # Back-end
+    #
+
+    - name: Install python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12.1'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+      working-directory: back-end
+
+    - name: Run pycodestyle
+      run: pycodestyle --show-source --show-pep8 $(find * -name "*.py")
+      working-directory: back-end
+
+
+    #
+    # Front-end
+    #
+    
     - name: Install node
       uses: actions/setup-node@v1
       with:
@@ -27,6 +53,7 @@ jobs:
     - name: Run ESLint
       run: npm run eslint
       working-directory: front-end
+
 
   # Execute tests
   tests:
