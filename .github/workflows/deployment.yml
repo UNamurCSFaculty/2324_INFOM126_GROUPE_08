@@ -1,0 +1,45 @@
+name: Deployment-pipeline
+
+on:
+  push:
+    branches:
+      - dev
+  workflow_dispatch:
+
+jobs:
+
+  ############################################################
+  # Pull project on production server and (re)start services #
+  ############################################################
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    
+    #
+    # Install ssh keys in the GitHub actions runner
+    #
+    - name: Install ssh keys
+      # check this thread to understand why its needed:
+      # https://stackoverflow.com/a/70447517
+      run: |
+        install -m 600 -D /dev/null ~/.ssh/id_rsa
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
+    
+    #
+    # Connect to production server and pull project
+    #
+    - name: Connect and pull
+      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} -p{{ secrets.SSH_PORT }} "cd ${{ secrets.WORK_DIR }} && git checkout ${{ secrets.MAIN_BRANCH }} && git pull && exit"
+
+    #
+    # Start services with docker compose
+    #
+    - name: Start services
+      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} -p{{ secrets.SSH_PORT }} "cd ${{ secrets.WORK_DIR }} && docker compose stop && docker compose up -d --build && exit"
+    
+    #
+    # Remove ssh keys from the GitHub actions runner
+    #
+    - name: Cleanup
+      run: rm -rf ~/.ssh
