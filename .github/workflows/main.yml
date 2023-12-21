@@ -7,22 +7,22 @@ on:
 
 jobs:
 
-  # Execute linters
-  linter:
+  ###################
+  # Execute linters #
+  ###################
+  linters:
     runs-on: ubuntu-latest
     steps:
+
     #
     # Init
     #
-    
     - name: Checkout
       uses: actions/checkout@v1
-
 
     #
     # Back-end
     #
-
     - name: Install python
       uses: actions/setup-python@v4
       with:
@@ -36,11 +36,9 @@ jobs:
       run: pycodestyle --show-source --show-pep8 $(find * -name "*.py")
       working-directory: back-end
 
-
     #
     # Front-end
     #
-    
     - name: Install node
       uses: actions/setup-node@v1
       with:
@@ -55,27 +53,26 @@ jobs:
       working-directory: front-end
 
 
-  # Execute tests
+  #################
+  # Execute tests #
+  #################
   tests:
     timeout-minutes: 10
     runs-on: ubuntu-latest
-    
     steps:
+
     #
     # Init
     #
-    
     - name: Checkout
       uses: actions/checkout@v1
 
     - name: Start containers
       run: docker-compose -f "docker-compose.yml" up -d --build
 
-
     #
     # Back-end
     #
-
     - name: Install python
       uses: actions/setup-python@v4
       with:
@@ -89,11 +86,9 @@ jobs:
       run: pytest -v
       working-directory: back-end
       
-
     #
     # Front-end
     #
-
     - name: Install node
       uses: actions/setup-node@v1
       with:
