@@ -2,8 +2,10 @@ version: '3'
 
 services:
   database:
-    image: postgres
     container_name: database_dev
+    build:
+      context: './database'
+      dockerfile: 'Dockerfile.dev'
     ports:
       - '5432:5432'
     environment:
