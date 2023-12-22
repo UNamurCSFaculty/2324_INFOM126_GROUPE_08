@@ -3,7 +3,7 @@ name: Deployment-pipeline
 on:
   push:
     branches:
-      - dev
+      - feature-57
   workflow_dispatch:
 
 jobs:
