@@ -1,3 +1,10 @@
+###############################################################
+# Deployment pipeline. It installs into the production server #
+# the project, pulled from the 'main' branch, and runs        #
+# it via docker compose.                                      #
+###############################################################
+
+
 name: Deployment-pipeline
 
 on:

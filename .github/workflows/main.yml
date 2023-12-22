@@ -1,3 +1,10 @@
+######################################################################
+# Main pipeline. Is triggered when a PR for branch 'dev' is created. #
+# It first validates code synthax for backend and                    #
+# frontend, then executes some tests.                                #
+######################################################################
+
+
 name: Main-pipeline
 
 on:
