@@ -3,9 +3,10 @@ from flask_cors import CORS
 
 from api.endpoints import guest_book_blueprint, qrcode_blueprint
 from api.database import db
+from config import Database
 
 
-def create_app(database_URI, **kwargs):
+def create_app(database_URI=Database.URI(), **kwargs):
     """ Application factory to create the app object. """
 
     # create Flask app

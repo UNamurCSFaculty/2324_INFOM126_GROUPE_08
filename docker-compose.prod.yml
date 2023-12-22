@@ -4,6 +4,9 @@ services:
   database:
     image: postgres
     container_name: database
+    environment:
+      POSTGRES_PASSWORD: 'grespost'
+      POSTGRES_DB: 'INFOM126'
     ports:
       - '5432:5432'
     healthcheck:
@@ -29,6 +32,6 @@ services:
       context: './front-end'
       dockerfile: 'Dockerfile'
     ports:
-      - '8080:8080'
+      - '80:80'
     depends_on:
       - back-end
