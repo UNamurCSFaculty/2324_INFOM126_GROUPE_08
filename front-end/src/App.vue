@@ -27,7 +27,7 @@ const entries = ref<GuestBookEntry[]>([]);
 
 <style scoped>
 .principal-container {
-  background-color: #2b0f5f;
+  background-color: #ff0f5f;
   color: white;
   border-radius: 5px;
   padding: 15px;
