@@ -36,7 +36,7 @@ jobs:
     # Start services with docker compose
     #
     - name: Start services
-      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} -p${{ secrets.SSH_PORT }} "cd ${{ secrets.WORK_DIR }} && docker compose down && docker compose up -d --build && exit"
+      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} -p${{ secrets.SSH_PORT }} "cd ${{ secrets.WORK_DIR }} && docker compose stop && docker compose up -d --build && exit"
     
     #
     # Remove ssh keys from the GitHub actions runner
