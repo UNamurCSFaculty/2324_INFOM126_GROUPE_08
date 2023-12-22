@@ -1,3 +1,6 @@
+# Environment variables project file
+.env
+
 # back-end
 instance/
 .env/
