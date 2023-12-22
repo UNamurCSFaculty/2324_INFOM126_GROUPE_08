@@ -7,6 +7,13 @@ WORKDIR /node-docker
 # copy both 'package.json' and 'package-lock.json' (if available)
 COPY package*.json ./
 
+# get API var arguments from building process and put them in an env file
+ARG VITE_API_HOST
+ARG VITE_API_PORT
+
+RUN echo "VITE_API_HOST=${VITE_API_HOST}" >> .env.production
+RUN echo "VITE_API_PORT=${VITE_API_PORT}" >> .env.production
+
 # install project dependencies
 RUN npm install
 
