@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "cypress-dev": "npx cypress run --headed --no-exit --config baseUrl=\"http://localhost:1234\"",
-    "cypress-headless-dev": "npx cypress run --headless --config baseUrl=\"http://localhost:1234\"",
-    "cypress-headless-prod": "npx cypress run --headless --config baseUrl=\"http://localhost:8080\"",
+    "cypress-dev": "npx cypress run --headed --no-exit --config baseUrl=\"http://localhost:3000\"",
+    "cypress-headless-dev": "npx cypress run --headless --config baseUrl=\"http://localhost:3000\"",
+    "cypress-headless-prod": "npx cypress run --headless --config baseUrl=\"http://localhost:3000\"",
     "eslint": "npx eslint --ext .ts,.vue src",
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
