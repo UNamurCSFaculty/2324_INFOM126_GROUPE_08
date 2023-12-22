@@ -2,13 +2,12 @@ version: '3'
 
 services:
   database:
-    image: postgres
-    container_name: database_dev
+    container_name: database
+    build:
+      context: './database'
+      dockerfile: 'Dockerfile'
     ports:
       - '5432:5432'
-    environment:
-      POSTGRES_PASSWORD: 'grespost'
-      POSTGRES_DB: 'INFOM126'
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -d INFOM126 -U postgres" ]
       interval: 5s
@@ -16,26 +15,22 @@ services:
       retries: 5
 
   back-end:
-    container_name: back-end_dev
+    container_name: back-end
     build:
       context: './back-end'
-      dockerfile: 'Dockerfile.dev'
+      dockerfile: 'Dockerfile'
     ports:
       - '5000:5000'
-    volumes:
-      - ./back-end:/python-docker
     depends_on:
       database:
         condition: service_healthy
 
   front-end:
-    container_name: front-end_dev
+    container_name: front-end
     build:
       context: './front-end'
-      dockerfile: 'Dockerfile.dev'
+      dockerfile: 'Dockerfile'
     ports:
-      - '3000:3000'
-    volumes:
-      - ./front-end:/node-docker
+      - '8080:8080'
     depends_on:
       - back-end
