@@ -78,6 +78,10 @@ jobs:
       run: |
         docker-compose -f "docker-compose.prod.yml" build --build-arg VITE_API_HOST=http://localhost  # override from env to perform in runner
         docker-compose -f "docker-compose.prod.yml" up -d
+      env:
+        POSTGRES_PASSWORD: ${{ secrets.ENV__POSTGRES_PASSWORD }}
+        POSTGRES_USER: ${{ secrets.ENV__POSTGRES_USER }}
+        POSTGRES_DB: ${{ secrets.ENV__POSTGRES_DB }}
 
     #
     # Back-end
