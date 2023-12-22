@@ -1,3 +1,4 @@
+import re
 from flask import Blueprint, request, send_file
 from api.controllers import guest_book_GET, guest_book_POST, qrcode_POST
 
@@ -17,8 +18,11 @@ def guest_book():
         text = request.json.get("text", None)
         author = request.json.get("author", None)
 
-        if author is None or text is None:
+        if author is None or text is None or not author.strip() or not text.strip():
             message = "Invalid request. Both author and text are required."
+            return {"message": message}, 400
+        if len(author.strip()) < 3 or len(text.strip()) < 3:
+            message = "Invalid request. Both author and text should be at least 2 characters long."
             return {"message": message}, 400
         else:
             return guest_book_POST(author, text)
@@ -26,7 +30,18 @@ def guest_book():
 
 @qrcode_blueprint.route("/qrcode", methods=["POST"])
 def qr_code():
-    url = request.json["url"]
+    try:
+        url = request.json["url"]
+    except KeyError:
+        return {"message": "Invalid request. 'url' is required."}, 400
+    
+    url_regex = re.compile(
+        r'^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$',
+        re.IGNORECASE
+    )
+
+    if not url_regex.match(url):
+        return {"message": "Invalid URL format."}, 400
 
     img = qrcode_POST(url)
 
