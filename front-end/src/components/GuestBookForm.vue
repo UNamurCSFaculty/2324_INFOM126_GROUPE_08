@@ -9,6 +9,7 @@
       <textarea id="message" v-model="message" class="form-control" required></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Send</button>
+    <p class="error-message" v-if="errorMessage">{{ errorMessage }}</p>
   </form>
   <p class="response-message">{{ requestResp }}</p>
 </template>
@@ -22,20 +23,27 @@ const emit = defineEmits(['add-entry']);
 const author = ref('');
 const message = ref('');
 const requestResp = ref('');
+const errorMessage = ref('');
 
 const addEntree = async () => {
   try {
+    if (author.value.trim() === '' || message.value.trim() === '') {
+      errorMessage.value = 'Name and message are required.';
+      return;
+    }
+
     // fetch back api
     const response = await axios.post('/guest-book', {
       author: author.value,
       text: message.value,
     });
 
-    // reset inputs
+    // reset inputs and error message
     author.value = '';
     message.value = '';
+    errorMessage.value = '';
 
-    // set the reponse from the back as the new requestResp
+    // set the response from the back as the new requestResp
     requestResp.value = response.data.message;
 
     // emit "add-entry" event with the given new entry
@@ -69,6 +77,11 @@ const addEntree = async () => {
 }
 .guest-book-form-container button:hover {
   background-color: #0a58ca;
+}
+
+.error-message {
+  color: red;
+  margin-top: 0.5em;
 }
 
 .header {

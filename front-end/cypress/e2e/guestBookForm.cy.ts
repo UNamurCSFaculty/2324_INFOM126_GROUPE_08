@@ -1,19 +1,22 @@
 /// <reference types="cypress" />
 
 describe('GuestBook Form', () => {
-  beforeEach(() => {
-    cy.visit('/');
-  });
-  
+
   it('submits the form with valid data', () => {
-    cy.get('#nom').type('Maxou');
+    cy.intercept('POST', '/guest-book').as('formSubmission');
+
+    cy.visit('/');
+
+    cy.get('#nom').type('User');
     cy.get('#message').type('This is a test message.');
- 
+
     cy.get('#formGuestBook').submit();
- 
-    cy.wait(1000); 
- 
+
+    cy.wait('@formSubmission')
+      .its('response.body.message')
+      .should('contain', 'New message successfully saved !');
+
     cy.get('.response-message').should('contain.text', 'New message successfully saved !');
   });
 });
-  
+

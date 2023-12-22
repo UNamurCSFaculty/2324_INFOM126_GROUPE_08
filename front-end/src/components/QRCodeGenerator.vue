@@ -11,6 +11,7 @@
         <div class="input-group mb-3">
           <button type="submit" style="max-width: 200px; margin: auto" class="form-control btn btn-primary">Generate QR Code</button>
         </div>
+        <p class="qr-code-error-message" v-if="errorQrCode">{{ errorQrCode }}</p>
       </form>
       <h4 v-if="qrcodeImage_b64"><center>QR Code:</center></h4><br>
       <div v-if="qrcodeImage_b64" class="qr-code-container" style="margin: auto; position: relative">
@@ -30,9 +31,17 @@ import axios from 'axios';
 
 const url = ref('');
 const qrcodeImage_b64 = ref('');
+const errorQrCode = ref('');
 
 const generateQRCode = async () => {
   try {
+    const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
+
+    if (!url.value.trim() || !urlRegex.test(url.value.trim())) {
+      errorQrCode.value = 'Please enter a valid link.';
+      return;
+    }
+
     const response = await axios.post('/qrcode', { url: url.value }, { responseType: 'arraybuffer' });
     qrcodeImage_b64.value = btoa(String.fromCharCode(...new Uint8Array(response.data)));
     url.value = "";
@@ -108,4 +117,10 @@ body {
 .py-2 {
   background-color: #1a0247;
 }
+
+.qr-code-error-message {
+  color: red;
+  margin-top: 0.5em;
+}
+
 </style>
