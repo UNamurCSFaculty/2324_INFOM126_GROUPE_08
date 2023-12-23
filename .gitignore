@@ -1,5 +1,14 @@
-back-end/src/__pycache__/*
+# Environment variables project file
+.env
 
+# back-end
+instance/
+.env/
+__pycache__/
+.pytest_cache/
+qrcode.png
+
+# front-end
 front-end/src/node_modules/
 front-end/src/dist/
 front-end/src/npm-debug.log*
@@ -7,7 +16,9 @@ front-end/src/yarn-debug.log*
 front-end/src/yarn-error.log*
 front-end/cypress/downloads
 front-end/cypress/screenshots
+front-end/package-lock.json
 
+# others
 *.idea
 *.vscode
 *.suo
@@ -15,3 +26,4 @@ front-end/cypress/screenshots
 *.njsproj
 *.sln
 *.sw*
+

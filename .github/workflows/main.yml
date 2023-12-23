@@ -1,0 +1,116 @@
+######################################################################
+# Main pipeline. Is triggered when a PR for branch 'dev' is created. #
+# It first validates code synthax for backend and                    #
+# frontend, then executes some tests.                                #
+######################################################################
+
+
+name: Main-pipeline
+
+on:
+  pull_request:
+    branches:
+    - dev
+
+jobs:
+
+  ###################
+  # Execute linters #
+  ###################
+  linters:
+    runs-on: ubuntu-latest
+    steps:
+
+    #
+    # Init
+    #
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    #
+    # Back-end
+    #
+    - name: Install python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12.1'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+      working-directory: back-end
+
+    - name: Run pycodestyle
+      run: pycodestyle --show-source --show-pep8 $(find * -name "*.py")
+      working-directory: back-end
+
+    #
+    # Front-end
+    #
+    - name: Install node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 18.x
+
+    - name: Install dependencies
+      run: npm install
+      working-directory: front-end
+
+    - name: Run ESLint
+      run: npm run eslint
+      working-directory: front-end
+
+
+  #################
+  # Execute tests #
+  #################
+  tests:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+
+    #
+    # Init
+    #
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Start containers
+      run: |
+        docker-compose -f "docker-compose.prod.yml" build --build-arg VITE_API_HOST=http://localhost  # override from env to perform in runner
+        docker-compose -f "docker-compose.prod.yml" up -d
+      env:
+        POSTGRES_PASSWORD: ${{ secrets.ENV__POSTGRES_PASSWORD }}
+        POSTGRES_USER: ${{ secrets.ENV__POSTGRES_USER }}
+        POSTGRES_DB: ${{ secrets.ENV__POSTGRES_DB }}
+
+    #
+    # Back-end
+    #
+    - name: Install python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12.1'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+      working-directory: back-end
+
+    - name: Run back-end tests
+      run: pytest -v
+      working-directory: back-end
+      
+    #
+    # Front-end
+    #
+    - name: Install node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 18.x
+
+    - name: Install dependencies
+      run: npm install
+      working-directory: front-end
+
+    - name: Run front-end tests
+      run: npm run cypress-headless-prod
+      working-directory: front-end
