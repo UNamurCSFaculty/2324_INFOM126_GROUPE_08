@@ -35,8 +35,9 @@
 - [About](#about)
     - [Built With](#built-with)
 - [Getting Started](#getting-started)
+    - [Before running the app](#before-running-the-app)
     - [Development purpose](#development-purpose)
-    - [Running only purpose](#running-only-purpose)
+    - [Production purpose](#production-purpose)
 - [Roadmap](#roadmap)
 - [Support](#support)
 - [Project assistance](#project-assistance)
@@ -72,7 +73,7 @@ Before running the project, you need to configure some environment variables.
 
 To do so, you have two options:
 
-1) Create an `.env` at the root of the project
+1) Create an `.env` file at the root of the project
 
 2) Add variables in your own environment
 
