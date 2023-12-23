@@ -10,7 +10,7 @@ name: Deployment-pipeline
 on:
   push:
     branches:
-      - feature-57
+      - main
   workflow_dispatch:
 
 jobs:
@@ -56,12 +56,11 @@ jobs:
           export POSTGRES_USER=${{ secrets.ENV__POSTGRES_USER }} &&
           export POSTGRES_PASSWORD=${{ secrets.ENV__POSTGRES_PASSWORD }} &&
           export HOST_ADDRESS=${{ secrets.ENV__HOST_ADDRESS }} &&
-          docker compose down &&
+          docker compose stop &&
           docker compose -f 'docker-compose.prod.yml' up -d --build &&
           exit
         "
-        
-    
+ 
     #
     # Remove ssh keys from the GitHub actions runner
     #
