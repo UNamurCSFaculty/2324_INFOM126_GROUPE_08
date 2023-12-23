@@ -40,10 +40,21 @@ jobs:
       run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} -p${{ secrets.SSH_PORT }} "cd ${{ secrets.WORK_DIR }} && git checkout ${{ secrets.MAIN_BRANCH }} && git pull && exit"
 
     #
-    # Start services with docker compose
+    # Set environments variables and start services with docker compose
     #
-    - name: Start services
-      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} -p${{ secrets.SSH_PORT }} "cd ${{ secrets.WORK_DIR }} && docker compose stop && docker compose -f 'docker-compose.prod.yml' up -d --build && exit"
+    - name: Set envs and start services
+      run: >
+        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} -p${{ secrets.SSH_PORT }} "
+          cd ${{ secrets.WORK_DIR }} &&
+          export POSTGRES_DB=${{ secrets.ENV__POSTGRES_DB }} &&
+          export POSTGRES_USER=${{ secrets.ENV__POSTGRES_USER }} &&
+          export POSTGRES_PASSWORD=${{ secrets.ENV__POSTGRES_PASSWORD }} &&
+          export HOST_ADDRESS=${{ ENV__HOST_ADDRESS }} &&
+          docker compose stop &&
+          docker compose -f 'docker-compose.prod.yml' up -d --build &&
+          exit
+        "
+        
     
     #
     # Remove ssh keys from the GitHub actions runner
