@@ -1,3 +1,7 @@
+#
+# Dockerfile for production environment
+#
+
 FROM python:3.8-slim-buster
 
 # make the 'python-docker' the current working dirrectory

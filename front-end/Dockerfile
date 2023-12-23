@@ -1,3 +1,7 @@
+#
+# Dockerfile for production environment
+#
+
 # BUILD STAGE
 FROM node:lts-alpine as build-stage
 
