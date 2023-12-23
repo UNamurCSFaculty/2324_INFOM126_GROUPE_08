@@ -37,7 +37,13 @@ jobs:
     # Connect to production server and pull project
     #
     - name: Connect and pull
-      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} -p${{ secrets.SSH_PORT }} "cd ${{ secrets.WORK_DIR }} && git checkout ${{ secrets.MAIN_BRANCH }} && git pull && exit"
+      run: >
+        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} -p${{ secrets.SSH_PORT }} "
+          cd ${{ secrets.WORK_DIR }} &&
+          git checkout ${{ secrets.MAIN_BRANCH }} &&
+          git pull &&
+          exit
+        "
 
     #
     # Set environments variables and start services with docker compose
@@ -50,7 +56,7 @@ jobs:
           export POSTGRES_USER=${{ secrets.ENV__POSTGRES_USER }} &&
           export POSTGRES_PASSWORD=${{ secrets.ENV__POSTGRES_PASSWORD }} &&
           export HOST_ADDRESS=${{ secrets.ENV__HOST_ADDRESS }} &&
-          docker compose stop &&
+          docker compose down &&
           docker compose -f 'docker-compose.prod.yml' up -d --build &&
           exit
         "
