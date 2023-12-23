@@ -1,9 +1,12 @@
+import os
+
+
 class Database:
-    HOST = "database"
-    PORT = 5432
-    USERNAME = "postgres"
-    PASSWORD = "grespost"
-    DB = "INFOM126"
+    HOST = os.getenv('DB_HOST')
+    PORT = os.getenv('DB_PORT')
+    USERNAME = os.getenv('POSTGRES_USER')
+    PASSWORD = os.getenv('POSTGRES_PASSWORD')
+    DB = os.getenv('POSTGRES_DB')
 
     @classmethod
     def URI(cls):

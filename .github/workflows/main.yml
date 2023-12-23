@@ -1,3 +1,10 @@
+######################################################################
+# Main pipeline. Is triggered when a PR for branch 'dev' is created. #
+# It first validates code synthax for backend and                    #
+# frontend, then executes some tests.                                #
+######################################################################
+
+
 name: Main-pipeline
 
 on:
@@ -68,7 +75,13 @@ jobs:
       uses: actions/checkout@v1
 
     - name: Start containers
-      run: docker-compose -f "docker-compose.yml" up -d --build
+      run: |
+        docker-compose -f "docker-compose.prod.yml" build --build-arg VITE_API_HOST=http://localhost  # override from env to perform in runner
+        docker-compose -f "docker-compose.prod.yml" up -d
+      env:
+        POSTGRES_PASSWORD: ${{ secrets.ENV__POSTGRES_PASSWORD }}
+        POSTGRES_USER: ${{ secrets.ENV__POSTGRES_USER }}
+        POSTGRES_DB: ${{ secrets.ENV__POSTGRES_DB }}
 
     #
     # Back-end

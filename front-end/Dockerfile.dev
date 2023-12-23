@@ -1,0 +1,13 @@
+#
+# Dockerfile for development environment
+#
+
+FROM node:lts-alpine
+
+WORKDIR /node-docker
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]
