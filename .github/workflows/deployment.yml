@@ -49,7 +49,7 @@ jobs:
           export POSTGRES_DB=${{ secrets.ENV__POSTGRES_DB }} &&
           export POSTGRES_USER=${{ secrets.ENV__POSTGRES_USER }} &&
           export POSTGRES_PASSWORD=${{ secrets.ENV__POSTGRES_PASSWORD }} &&
-          export HOST_ADDRESS=${{ ENV__HOST_ADDRESS }} &&
+          export HOST_ADDRESS=${{ secrets.ENV__HOST_ADDRESS }} &&
           docker compose stop &&
           docker compose -f 'docker-compose.prod.yml' up -d --build &&
           exit
