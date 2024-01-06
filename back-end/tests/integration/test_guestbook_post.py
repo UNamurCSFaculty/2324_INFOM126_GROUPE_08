@@ -33,3 +33,66 @@ def test_guestbook_2(client):
     # assert
     assert response.status_code == 400
     assert response.json["message"] == ERROR_MESSAGE
+
+
+def test_guestbook_3(client):
+    # Arrange
+    ENDPOINT = "/guest-book"
+    AUTHOR = "John"
+    TEXT = ""
+    DATA = {"author": AUTHOR, "text": TEXT}
+    ERROR_MESSAGE = "Invalid request. Both author and text are required."
+
+    # Act
+    response = client.post(ENDPOINT, json=DATA)
+
+    # Assert
+    assert response.status_code == 400
+    assert response.json["message"] == ERROR_MESSAGE
+
+
+def test_guestbook_4(client):
+    # Arrange
+    ENDPOINT = "/guest-book"
+    AUTHOR = ""
+    TEXT = "Hi"
+    DATA = {"author": AUTHOR, "text": TEXT}
+    ERROR_MESSAGE = "Invalid request. Both author and text are required."
+
+    # Act
+    response = client.post(ENDPOINT, json=DATA)
+
+    # Assert
+    assert response.status_code == 400
+    assert response.json["message"] == ERROR_MESSAGE
+
+def test_guestbook_5(client):
+    # Arrange
+    ENDPOINT = "/guest-book"
+    AUTHOR = "Us"
+    TEXT = "Hi here"
+    DATA = {"author": AUTHOR, "text": TEXT}
+    ERROR_MESSAGE = "Invalid request. Both author and text should be at least 2 characters long."
+
+    # Act
+    response = client.post(ENDPOINT, json=DATA)
+
+    # Assert
+    assert response.status_code == 400
+    assert response.json["message"] == ERROR_MESSAGE
+
+def test_guestbook_6(client):
+    # Arrange
+    ENDPOINT = "/guest-book"
+    AUTHOR = "User"
+    TEXT = "Hi"
+    DATA = {"author": AUTHOR, "text": TEXT}
+    ERROR_MESSAGE = "Invalid request. Both author and text should be at least 2 characters long."
+
+    # Act
+    response = client.post(ENDPOINT, json=DATA)
+
+    # Assert
+    assert response.status_code == 400
+    assert response.json["message"] == ERROR_MESSAGE
+
